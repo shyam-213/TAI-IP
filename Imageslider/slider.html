@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Image Slider</title>
+        <!-- Bootstrap CSS -->
+        <link href="Imageslider/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="slider-container">
+            <h2 class="slider-title">My Image Slider</h2>
+            <div class="image-container">
+                <div class="slide active">
+                    <img src="img1.jpg" alt="Slide 1">
+                </div>
+                <div class="slide">
+                    <img src="img2.jpg" alt="Slide 2">
+                </div>
+                <div class="slide">
+                    <img src="img3.jpg" alt="Slide 3">
+                </div>
+                <div class="slide">
+                    <img src="img4.jpg" alt="Slide 4">
+                </div>
+            </div>
+            <div class="navigation">
+                <button id="prev" class="btn btn-primary">Previous</button>
+                <button id="next" class="btn btn-primary">Next</button>
+            </div>
+            <div class="navigation-dots">
+                <button class="navigation-dot active"></button>
+                <button class="navigation-dot"></button>
+                <button class="navigation-dot"></button>
+                <button class="navigation-dot"></button>
+            </div>
+        </div>
+
+        <!-- Bootstrap JS -->
+        <script src="Imageslider/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+        <script>
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.navigation-dot');
+            let currentSlide = 0;
+            let isPlaying = false;
+            let intervalId;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    if (i === index) {
+                        slide.classList.add('active');
+                        dots[i].classList.add('active');
+                    } else {
+                        slide.classList.remove('active');
+                        dots[i].classList.remove('active');
+                    }
+                });
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            function previousSlide() {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            function updateDots() {
+                dots.forEach((dot, i) => {
+                    if (i === currentSlide) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+
+            intervalId = setInterval(nextSlide, 2000); // Change slide every 2 seconds
+
+            document.getElementById('prev').addEventListener('click', previousSlide);
+            document.getElementById('next').addEventListener('click', nextSlide);
+        </script>
+    </body>
+</html>

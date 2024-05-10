@@ -1,0 +1,86 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: rgb(117, 245, 198); /* Light background */
+}
+
+.slider-title {
+    text-align: center; /* Center the title */
+    margin-top: 20px; /* Adjust top margin */
+    font-size: 24px; /* Adjust font size */
+    color: #000000; /* Adjust font color */
+    font-family: "Arial", sans-serif; /* Change font family */
+}
+
+.slider-container {
+  width: 100%;
+  max-width: 900px; /* Set maximum width for the slider */
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.image-container {
+  position: relative;
+}
+
+.slide {
+  display: none;
+  width: 100%;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slide img {
+  max-width: 100%; /* Ensure image does not exceed container width */
+  height: 550px; /* Set a fixed height for the images */
+  display: block; /* Ensure centered alignment */
+  margin: 0 auto; /* Center the image horizontally */
+  object-fit: cover; /* Ensure images maintain aspect ratio and cover the entire space */
+  border-radius: 10px 10px 0 0; /* Rounded corners on top */
+}
+
+.slide:hover img {
+  transform: scale(1.05); /* Scale up image on hover */
+}
+
+.active {
+  display: block;
+}
+
+.navigation {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.navigation button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.navigation button:hover {
+  background-color: #3498db; /* Primary blue color on hover */
+  color: #fff;
+}
+
+.navigation-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.navigation-dot {
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #ccc;
+}
+
+.navigation-dot.active {
+  background-color: #2535c8; 
+}
